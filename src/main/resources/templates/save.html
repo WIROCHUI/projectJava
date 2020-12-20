@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Personas</title>
+<!-- Bootstrap CSS -->
+<!-- <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"> -->
+<link href="https://bootswatch.com/4/superhero/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Persona</h2>
+		<br>
+		<form action="#" th:action="@{/save}" class="form-group"
+			th:object="${persona}" method="post">
+
+			<input type="hidden" th:field="*{id}" id="id" name="id">
+
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="apellidoPaterno">Apellido Paterno</label> <input type="text"
+					class="form-control" id="apellidoPaterno" th:field="*{apellidoPaterno}"
+					name="apellidoPaterno">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="apellidoMaterno">Apellido Materno</label> <input type="text"
+					class="form-control" id="apellidoMaterno" th:field="*{apellidoMaterno}"
+					name="apellidoMaterno">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="direccion">Direccion</label> <input type="text"
+					class="form-control" id="direccion" th:field="*{direccion}"
+					name="direccion">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="telefono">Telefono</label> <input type="text"
+					class="form-control" id="telefono" th:field="*{telefono}"
+					name="telefono">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="fechaNacimiento">Fecha de Nacimiento</label> <input type="date"
+					class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}"
+					name="fechaNacimiento">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label> <input type="text"
+					class="form-control" id="email" th:field="*{email}"
+					name="email">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="tipo">Tipo Empleado</label> 
+				<select th:field="*{tipo}"
+					class="form-control" id="tipo">
+					<option value=""> Seleccione </option>
+					<option th:each="pai:${listTipo}" th:value="${pai.id}"
+						th:text="${pai.nombre}" />
+				</select>
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="departamento">Departamento</label> 
+				<select th:field="*{departamento}"
+					class="form-control" id="departamento">
+					<option value=""> Seleccione </option>
+					<option th:each="pai:${listPaises}" th:value="${pai.id}"
+						th:text="${pai.nombre}" />
+				</select>
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="estado">Estado Civil</label> 
+				<select th:field="*{estado}"
+					class="form-control" id="estado">
+					<option value=""> Seleccione </option>
+					<option th:each="pai:${listEstado}" th:value="${pai.id}"
+						th:text="${pai.nombre}" />
+				</select>
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">
+				</small>
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>
